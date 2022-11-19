@@ -11,32 +11,74 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
+  disable_netrw = true,
+  hijack_netrw = true,
+  open_on_setup = false,
+  ignore_ft_on_setup = { "alpha" },
+  hijack_cursor = true,
+  hijack_unnamed_buffer_when_opening = false,
+  update_cwd = true,
   update_focused_file = {
     enable = true,
     update_cwd = true,
   },
+  view = {
+    width = 30,
+    side = "right",
+    hide_root_folder = true,
+    mappings = {
+      list = {
+        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        { key = "h", cb = tree_cb "close_node" },
+        { key = "v", cb = tree_cb "vsplit" },
+      },
+    },
+  },
+  git = {
+    enable = false,
+    ignore = true,
+  },
+  filesystem_watchers = {
+    enable = true,
+  },
+  actions = {
+    open_file = {
+      resize_window = true,
+    },
+  },
   renderer = {
+    highlight_git = false,
+    highlight_opened_files = "none",
     root_folder_modifier = ":t",
+
     icons = {
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = false,
+      },
+
       glyphs = {
         default = "",
         symlink = "",
         folder = {
-          arrow_open = "",
-          arrow_closed = "",
-          default = "",
-          open = "",
+          default = "",
           empty = "",
-          empty_open = "",
+          empty_open = "",
+          open = "",
           symlink = "",
           symlink_open = "",
+          arrow_open = "",
+          arrow_closed = "",
         },
+
         git = {
           unstaged = "",
-          staged = "S",
+          staged = "✓",
           unmerged = "",
           renamed = "➜",
-          untracked = "U",
+          untracked = "★",
           deleted = "",
           ignored = "◌",
         },
@@ -51,17 +93,6 @@ nvim_tree.setup {
       info = "",
       warning = "",
       error = "",
-    },
-  },
-  view = {
-    width = 30,
-    side = "left",
-    mappings = {
-      list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "v", cb = tree_cb "vsplit" },
-      },
     },
   },
 }

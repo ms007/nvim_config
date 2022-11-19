@@ -18,9 +18,14 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
--- Save faster
-keymap('n', 'ZZ', ':w<CR>', opts)
-keymap("i", "ZZ", "<ESC>:w<CR>", opts)
+-- Fast saving with <leader> and s
+keymap('n', '<leader>s', ':w<CR>', opts)
+
+-- Close window
+keymap('n', '<leader>q', ':Bdelete!<CR>', opts)
+
+-- Clear search highlighting with <leader> and c
+keymap('n', '<leader>c', ':nohl<CR>', opts)
 
 -- Normal --
 -- Better window navigation
@@ -28,8 +33,6 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -75,4 +78,9 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+
+-- Nvimtree
+keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
