@@ -46,7 +46,7 @@ return packer.startup(function(use)
 	use { "kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352" }
 
   -- color schemes
-	use { 'LunarVim/onedarker.nvim', commit = 'b00dd21' }
+	use { 'navarasu/onedark.nvim' }
 
   -- bufferline
 	use { "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" }
