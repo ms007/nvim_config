@@ -19,5 +19,5 @@ keymap("n", "<S-l>", ":bnext<cr>", opts)
 keymap("n", "<S-h>", ":bprevious<cr>", opts)
 
 -- Comments
-vim.api.nvim_set_keymap("n", "<C-k>", "gcc", { noremap = false })
-vim.api.nvim_set_keymap("v", "<C-k>", "gbc", { noremap = false })
+vim.api.nvim_set_keymap("n", "<C-/>", "gcc", { noremap = false })
+vim.api.nvim_set_keymap("v", "<C-/>", "gbc<Esc>", { noremap = false })
