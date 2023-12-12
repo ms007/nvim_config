@@ -1,5 +1,23 @@
 local icons = require("config.icons")
 
+local function config_on_attach(bufnr)
+  local api = require "nvim-tree.api"
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+  vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
+  vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close directory'))
+  vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
+  vim.keymap.set('n', 'H', api.node.open.horizontal, opts('Open: Horizontal Split'))
+end
+
 return {
   "nvim-tree/nvim-tree.lua",
   lazy = false,
@@ -8,6 +26,7 @@ return {
   },
   config = function()
     require("nvim-tree").setup({
+      on_attach = config_on_attach,
       auto_reload_on_write = false,
       disable_netrw = false,
       hijack_cursor = false,
@@ -77,7 +96,7 @@ return {
         },
         icons = {
           webdev_colors = use_icons,
-          git_placement = "before",
+          git_placement = "after",
           padding = " ",
           symlink_arrow = " ➛ ",
           show = {
