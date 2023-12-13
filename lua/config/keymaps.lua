@@ -18,6 +18,10 @@ keymap("n", "<Space>w", ":w<cr>", opts)
 keymap("n", "<S-l>", ":bnext<cr>", opts)
 keymap("n", "<S-h>", ":bprevious<cr>", opts)
 
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
+keymap("v", "p", '"_dP', opts)
+
 -- Comments
 vim.api.nvim_set_keymap("n", "<C-/>", "gcc", { noremap = false })
 vim.api.nvim_set_keymap("v", "<C-/>", "gbc<Esc>", { noremap = false })
