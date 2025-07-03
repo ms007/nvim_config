@@ -1,0 +1,30 @@
+return {
+  'stevearc/oil.nvim',
+  ---@module 'oil'
+  ---@type oil.SetupOpts
+  opts = {
+    keymaps = {
+      ['\\'] = 'actions.parent',
+      ['<CR>'] = 'actions.select',
+      ['g?'] = 'actions.show_help',
+      -- Additional actions can be found in the help file:
+      -- :help oil-actions
+    },
+    default_file_explorer = true,
+  },
+  -- Optional dependencies
+  dependencies = { { 'echasnovski/mini.icons', opts = {} } },
+  -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+  -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+  lazy = false,
+  config = function()
+    require('oil').setup {}
+
+    -- Definiere ein globales Keybinding, um Oil zu öffnen.
+    -- Dieses Keybinding ist in JEDEM Puffer aktiv (im Normalmodus 'n').
+    -- Wir verwenden '_' (Unterstrich), um das aktuelle Verzeichnis in Oil zu öffnen.
+    vim.keymap.set('n', '\\', function()
+      require('oil').open_float()
+    end, { desc = 'Open Oil in current directory' })
+  end,
+}
