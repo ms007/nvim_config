@@ -11,6 +11,18 @@ return {
       -- :help oil-actions
     },
     default_file_explorer = true,
+    delete_to_trash = true,
+    skip_confirm_for_simple_edits = true,
+    view_options = {
+      show_hidden = true,
+      natural_order = true,
+      is_always_hidden = function(name, _)
+        return name == '..' or name == '.git'
+      end,
+    },
+    win_options = {
+      wrap = true,
+    },
   },
   -- Optional dependencies
   dependencies = { { 'echasnovski/mini.icons', opts = {} } },
@@ -24,7 +36,7 @@ return {
     -- Dieses Keybinding ist in JEDEM Puffer aktiv (im Normalmodus 'n').
     -- Wir verwenden '_' (Unterstrich), um das aktuelle Verzeichnis in Oil zu öffnen.
     vim.keymap.set('n', '\\', function()
-      require('oil').open_float()
+      require('oil').open()
     end, { desc = 'Open Oil in current directory' })
   end,
 }
