@@ -5,8 +5,22 @@
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Append at the end but cursor remains in place
+vim.keymap.set('n', 'J', 'mzJ`z')
+
+-- Move down and up but cursor remains in the middle
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
+-- Search next cursor remains in the middle
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Save file
+vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save current buffer' })
 
 -- Exit insert mode
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
@@ -39,6 +53,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

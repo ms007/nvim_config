@@ -5,9 +5,12 @@
 
 -- Make line numbers default
 vim.o.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
+
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -26,8 +29,20 @@ end)
 -- Enable break indent
 vim.o.breakindent = true
 
+vim.o.smartindent = true
+
+vim.o.wrap = false
+
 -- Save undo history
+vim.o.undodir = os.getenv 'HOME' .. '/.vim/undodir'
 vim.o.undofile = true
+vim.o.swapfile = false
+vim.o.backup = false
+
+vim.o.hlsearch = false
+vim.o.incsearch = true
+
+vim.o.termguicolors = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
@@ -37,7 +52,7 @@ vim.o.smartcase = true
 vim.o.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 50
 
 -- Decrease mapped sequence wait time
 vim.o.timeoutlen = 300
