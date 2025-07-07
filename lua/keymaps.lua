@@ -24,6 +24,7 @@ vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save current buffer' })
 
 -- Exit insert mode
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
+vim.keymap.set('v', 'jk', '<Esc>', { desc = 'Exit visual mode' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which

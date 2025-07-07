@@ -29,8 +29,8 @@ return {
   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
-  config = function()
-    require('oil').setup {}
+  config = function(_, opts)
+    require('oil').setup(opts)
 
     -- Definiere ein globales Keybinding, um Oil zu öffnen.
     -- Dieses Keybinding ist in JEDEM Puffer aktiv (im Normalmodus 'n').

@@ -5,7 +5,22 @@ return {
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'javascript',
+        'typescript',
+        'tsx',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -16,6 +31,20 @@ return {
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
+      textobjects = {
+        select = {
+          ['aa'] = '@parameter.outer', -- Around any parameter or argument
+          ['ia'] = '@parameter.inner', -- Inner any parameter or argument
+          ['af'] = '@function.outer', -- Around a function definition or call
+          ['if'] = '@function.inner', -- Inner a function definition or call
+          ['ac'] = '@class.outer', -- Around a class definition
+          ['ic'] = '@class.inner', -- Inner a class definition
+          ['ab'] = '@block.outer', -- Around a generic code block (often {})
+          ['ib'] = '@block.inner', -- Inner a generic code block
+          ['at'] = '@markup.outer', -- Around a markup tag (HTML/JSX)
+          ['it'] = '@markup.inner', -- Inner a markup tag (HTML/JSX)
+        },
+      },
     },
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
