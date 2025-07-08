@@ -34,11 +34,11 @@ vim.keymap.set('v', 'jk', '<Esc>', { desc = 'Exit visual mode' })
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+-- Remap toggle line or block comments
+vim.api.nvim_set_keymap('n', '<leader>c', '<Plug>(comment_toggle_linewise_current)', { noremap = true, silent = true, desc = 'Toggle line comment' })
+vim.api.nvim_set_keymap('v', '<leader>c', '<Plug>(comment_toggle_linewise_visual)', { noremap = true, silent = true, desc = 'Toggle visual comment' })
+vim.api.nvim_set_keymap('n', '<leader>bc', '<Plug>(comment_toggle_blockwise_current)', { noremap = true, silent = true, desc = 'Toggle block comment' })
+vim.api.nvim_set_keymap('v', '<leader>bc', '<Plug>(comment_toggle_blockwise_visual)', { noremap = true, silent = true, desc = 'Toggle block comment' })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
