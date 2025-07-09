@@ -6,4 +6,5 @@ return {
   require 'custom.plugins.quick-scope',
   require 'custom.plugins.comment',
   require 'custom.plugins.harpoon',
+  require 'custom.plugins.autotag',
 }
