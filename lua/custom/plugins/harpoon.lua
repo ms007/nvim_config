@@ -29,6 +29,14 @@ return {
       desc = 'Harpoon: Next file in list',
     },
     {
+      '<leader>d',
+      function()
+        require('harpoon'):list():clear()
+        print 'Harpoon list cleared!'
+      end,
+      desc = 'Harpoon: Clear all entries',
+    },
+    {
       '<leader>p',
       function()
         require('harpoon'):list():prev { ui_nav_wrap = true }

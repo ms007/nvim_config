@@ -7,4 +7,6 @@ return {
   require 'custom.plugins.comment',
   require 'custom.plugins.harpoon',
   require 'custom.plugins.autotag',
+  require 'custom.plugins.autopairs',
+  require 'custom.plugins.bufdelete',
 }

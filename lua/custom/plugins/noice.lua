@@ -13,7 +13,12 @@ return {
         },
       },
       presets = {
+        command_palette = true,
         lsp_doc_border = true,
+      },
+      popupmenu = {
+        enabled = true,
+        backend = 'nui',
       },
     },
     dependencies = {

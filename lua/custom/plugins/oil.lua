@@ -7,6 +7,7 @@ return {
       ['\\'] = 'actions.parent',
       ['<CR>'] = 'actions.select',
       ['g?'] = 'actions.show_help',
+      ['gg'] = { 'actions.cd', mode = 'n' },
       -- Additional actions can be found in the help file:
       -- :help oil-actions
     },
