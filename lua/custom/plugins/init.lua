@@ -9,4 +9,5 @@ return {
   require 'custom.plugins.autotag',
   require 'custom.plugins.autopairs',
   require 'custom.plugins.bufdelete',
+  require 'custom.plugins.twilight',
 }

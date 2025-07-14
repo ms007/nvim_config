@@ -17,14 +17,13 @@ vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>f', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quick[f]ix list' })
+vim.keymap.set('n', '<leader>x', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfi[x] list' })
 
 -- Save file
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save current buffer' })
 
 -- Exit insert mode
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
-vim.keymap.set('v', 'jk', '<Esc>', { desc = 'Exit visual mode' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -71,5 +70,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
+
+vim.keymap.set('n', '<leader>tw', '<cmd>Twilight<CR>', { desc = 'Toggle Twilight' })
 
 -- vim: ts=2 sts=2 sw=2 et
