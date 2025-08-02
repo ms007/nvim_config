@@ -10,4 +10,5 @@ return {
   require 'custom.plugins.autopairs',
   require 'custom.plugins.bufdelete',
   require 'custom.plugins.twilight',
+  require 'custom.plugins.supermaven',
 }

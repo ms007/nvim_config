@@ -8,6 +8,10 @@ return {
       ['<CR>'] = 'actions.select',
       ['g?'] = 'actions.show_help',
       ['gg'] = { 'actions.cd', mode = 'n' },
+      ['<C-h>'] = false,
+      ['<C-l>'] = false,
+      ['<C-r>'] = 'actions.refresh',
+      ['<leader-v>'] = { 'actions.select', opts = { vertical = true } },
       -- Additional actions can be found in the help file:
       -- :help oil-actions
     },
@@ -35,7 +39,7 @@ return {
 
     -- Definiere ein globales Keybinding, um Oil zu öffnen.
     -- Dieses Keybinding ist in JEDEM Puffer aktiv (im Normalmodus 'n').
-    -- Wir verwenden '_' (Unterstrich), um das aktuelle Verzeichnis in Oil zu öffnen.
+    -- Wir verwenden '\' (backslash), um das aktuelle Verzeichnis in Oil zu öffnen.
     vim.keymap.set('n', '\\', function()
       require('oil').open()
     end, { desc = 'Open Oil in current directory' })
