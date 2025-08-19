@@ -11,7 +11,7 @@ return {
       ['<C-h>'] = false,
       ['<C-l>'] = false,
       ['<C-r>'] = 'actions.refresh',
-      ['<leader-v>'] = { 'actions.select', opts = { vertical = true } },
+      ['<C-v>'] = { 'actions.select', opts = { vertical = true } },
       -- Additional actions can be found in the help file:
       -- :help oil-actions
     },
