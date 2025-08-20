@@ -11,4 +11,5 @@ return {
   require 'custom.plugins.bufdelete',
   require 'custom.plugins.twilight',
   require 'custom.plugins.supermaven',
+  require 'custom.plugins.undotree',
 }
