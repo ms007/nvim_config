@@ -10,8 +10,8 @@ return {
         kind = 'floating',
         signs = {
           -- { CLOSED, OPENED }
-          section = { '', '' },
-          item = { '', '' },
+          section = { '', '' },
+          item = { '', '' },
           hunk = { '', '' },
         },
         integrations = { diffview = true }, -- adds integration with diffview.nvim
