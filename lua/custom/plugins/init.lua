@@ -8,7 +8,7 @@ return {
   require 'custom.plugins.harpoon',
   require 'custom.plugins.autotag',
   require 'custom.plugins.autopairs',
-  require 'custom.plugins.bufdelete',
+  require 'custom.plugins.snacks',
   require 'custom.plugins.supermaven',
   require 'custom.plugins.undotree',
   require 'custom.plugins.neogit',
