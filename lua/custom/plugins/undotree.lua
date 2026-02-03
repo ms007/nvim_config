@@ -1,6 +1,7 @@
 return {
-  'mbbill/undotree',
-  config = function()
-    vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
-  end,
+  'jiaoshijie/undotree',
+  dependencies = 'nvim-lua/plenary.nvim',
+  keys = {
+    { '<leader>u', '<cmd>UndotreeToggle<CR>', desc = 'Toggle UndoTree' },
+  },
 }

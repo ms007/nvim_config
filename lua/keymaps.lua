@@ -22,6 +22,22 @@ vim.keymap.set('n', '<leader>x', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Save file
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save current buffer' })
 
+-- Buffer closing
+vim.keymap.set('n', '<leader>q', function()
+  require('mini.bufremove').delete(0, false)
+end, { desc = 'Close current buffer' })
+
+vim.keymap.set('n', '<leader>Q', function()
+  local current_buf = vim.api.nvim_get_current_buf()
+  local bufs = vim.api.nvim_list_bufs()
+  for _, buf in ipairs(bufs) do
+    if buf ~= current_buf and vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted then
+      require('mini.bufremove').delete(buf, false)
+    end
+  end
+  vim.cmd 'only'
+end, { desc = 'Close all other buffers' })
+
 -- Exit insert mode
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Exit insert mode' })
 
