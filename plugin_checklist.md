@@ -2,9 +2,8 @@
 
 Hier ist eine Liste der Plugins in deiner Konfiguration. Wir werden jedes Plugin einzeln durchgehen und optimieren.
 
-- [ ] NMAC427/guess-indent.nvim
-- [ ] lewis6991/gitsigns.nvim
-- [ ] folke/which-key.nvim
+- [x] lewis6991/gitsigns.nvim
+- [x] folke/which-key.nvim
 - [ ] nvim-telescope/telescope.nvim
 - [ ] nvim-telescope/telescope-fzf-native.nvim
 - [ ] nvim-telescope/telescope-ui-select.nvim
