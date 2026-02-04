@@ -4,9 +4,9 @@ Hier ist eine Liste der Plugins in deiner Konfiguration. Wir werden jedes Plugin
 
 - [x] lewis6991/gitsigns.nvim
 - [x] folke/which-key.nvim
-- [ ] nvim-telescope/telescope.nvim
-- [ ] nvim-telescope/telescope-fzf-native.nvim
-- [ ] nvim-telescope/telescope-ui-select.nvim
+- [x] nvim-telescope/telescope.nvim
+- [x] nvim-telescope/telescope-fzf-native.nvim
+- [x] nvim-telescope/telescope-ui-select.nvim
 - [ ] nvim-mini/mini.icons
 - [ ] neovim/nvim-lspconfig
 - [ ] folke/lazydev.nvim
