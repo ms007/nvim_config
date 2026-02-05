@@ -7,20 +7,20 @@ Hier ist eine Liste der Plugins in deiner Konfiguration. Wir werden jedes Plugin
 - [x] nvim-telescope/telescope.nvim
 - [x] nvim-telescope/telescope-fzf-native.nvim
 - [x] nvim-telescope/telescope-ui-select.nvim
-- [ ] nvim-mini/mini.icons
-- [ ] neovim/nvim-lspconfig
-- [ ] folke/lazydev.nvim
-- [ ] mason-org/mason.nvim
-- [ ] mason-org/mason-lspconfig.nvim
-- [ ] WhoIsSethDaniel/mason-tool-installer.nvim
-- [ ] j-hui/fidget.nvim
-- [ ] saghen/blink.cmp
+- [x] nvim-mini/mini.icons
+- [x] neovim/nvim-lspconfig
+- [x] folke/lazydev.nvim
+- [x] mason-org/mason.nvim
+- [x] mason-org/mason-lspconfig.nvim
+- [x] WhoIsSethDaniel/mason-tool-installer.nvim
+- [x] j-hui/fidget.nvim
+- [x] saghen/blink.cmp
 - [ ] stevearc/conform.nvim
 - [ ] L3MON4D3/LuaSnip
 - [ ] rafamadriz/friendly-snippets
 - [ ] folke/tokyonight.nvim
 - [x] folke/todo-comments.nvim
-- [ ] nvim-mini/mini.nvim
+- [x] nvim-mini/mini.nvim
 - [ ] nvim-treesitter/nvim-treesitter
 - [ ] nvim-treesitter/nvim-treesitter-textobjects
 - [ ] windwp/nvim-autopairs
