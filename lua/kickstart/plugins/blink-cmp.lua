@@ -75,10 +75,7 @@ return {
         keymap = { preset = 'inherit' },
         completion = {
           menu = { auto_show = true },
-          window = {
-            completion = 'bordered',
-            documentation = 'bordered',
-          },
+
         },
       },
 

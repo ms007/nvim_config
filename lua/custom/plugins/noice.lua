@@ -37,7 +37,15 @@ return {
     },
     dependencies = {
       'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
+      {
+        'rcarriga/nvim-notify',
+        opts = {
+          timeout = 500,
+        },
+        config = function(_, opts)
+          require('notify').setup(opts)
+        end,
+      },
     },
   },
 }
