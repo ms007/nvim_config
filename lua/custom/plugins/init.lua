@@ -12,4 +12,5 @@ return {
   require 'custom.plugins.supermaven',
   require 'custom.plugins.undotree',
   require 'custom.plugins.neogit',
+  require 'custom.plugins.java',
 }

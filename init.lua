@@ -93,6 +93,15 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- Bekannten Bug in lspconfig/lsp/jdtls.lua unterdrücken (nvim-jdtls übernimmt)
+local original_notify = vim.notify
+vim.notify = function(msg, level, opts)
+  if level == vim.log.levels.WARN and type(msg) == 'string' and msg:find("attempt to index local 'config'", 1, true) then
+    return
+  end
+  return original_notify(msg, level, opts)
+end
+
 -- [[ Setting options ]]
 require 'options'
 
