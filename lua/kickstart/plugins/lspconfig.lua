@@ -192,6 +192,18 @@ return {
         },
       }
 
+      local original_handler = vim.lsp.handlers['textDocument/publishDiagnostics']
+      vim.lsp.handlers['textDocument/publishDiagnostics'] = function(err, result, ctx, config)
+        if result and result.diagnostics then
+          result.diagnostics = vim.tbl_filter(function(d)
+            return not (d.message and d.message:match 'Props must be serializable')
+          end, result.diagnostics)
+        end
+        if original_handler then
+          original_handler(err, result, ctx, config)
+        end
+      end
+
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -220,7 +232,8 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-
+        eslint = {},
+        ts_ls = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
