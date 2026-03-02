@@ -4,19 +4,33 @@ return {
   dependencies = {
     'mason-org/mason.nvim',
     'saghen/blink.cmp',
+    'mfussenegger/nvim-dap',
   },
   config = function()
     local jdtls = require 'jdtls'
 
     -- Pfade zu Mason-installierten Tools
-    local jdtls_path = vim.fn.stdpath 'data' .. '/mason/packages/jdtls'
+    local mason_path = vim.fn.stdpath 'data' .. '/mason/packages'
+    local jdtls_path = mason_path .. '/jdtls'
     local launcher = vim.fn.glob(jdtls_path .. '/plugins/org.eclipse.equinox.launcher_*.jar')
     local config_dir = jdtls_path .. '/config_mac_arm'
+
+    -- Debug-Bundles sammeln (java-debug-adapter + java-test)
+    local bundles = {}
+    local debug_jar = vim.fn.glob(mason_path .. '/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar')
+    if debug_jar ~= '' then
+      table.insert(bundles, debug_jar)
+    end
+    local test_jars = vim.split(vim.fn.glob(mason_path .. '/java-test/extension/server/*.jar', true), '\n')
+    for _, jar in ipairs(test_jars) do
+      if jar ~= '' then
+        table.insert(bundles, jar)
+      end
+    end
 
     local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     local function start_jdtls()
-      -- Workspace pro Projekt (root_dir muss pro Buffer berechnet werden)
       local root = require('jdtls.setup').find_root { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }
       local project_name = root and vim.fn.fnamemodify(root, ':t') or 'standalone'
       local workspace_dir = vim.fn.stdpath 'data' .. '/jdtls-workspace/' .. project_name
@@ -39,6 +53,9 @@ return {
         },
         root_dir = root or vim.fn.getcwd(),
         capabilities = capabilities,
+        init_options = {
+          bundles = bundles,
+        },
         settings = {
           java = {
             signatureHelp = { enabled = true },
@@ -69,6 +86,11 @@ return {
           vim.keymap.set('v', '<leader>jm', function()
             jdtls.extract_method(true)
           end, { buffer = bufnr, desc = 'Java: Extract [M]ethod' })
+
+          -- DAP nach LSP-Init registrieren
+          jdtls.setup_dap { hotcodereplace = 'auto' }
+          map('<leader>jt', require('jdtls').test_nearest_method, '[T]est Nearest Method')
+          map('<leader>jT', require('jdtls').test_class, '[T]est Class')
         end,
       }
     end
@@ -78,7 +100,6 @@ return {
       callback = start_jdtls,
     })
 
-    -- Sofort starten, da ft=java das Plugin erst beim Öffnen einer .java-Datei lädt
     start_jdtls()
   end,
 }

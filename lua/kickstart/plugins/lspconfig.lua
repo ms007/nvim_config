@@ -267,6 +267,8 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'jdtls', -- Java LSP
+        'java-debug-adapter', -- Java DAP
+        'java-test', -- Java Test Runner
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
