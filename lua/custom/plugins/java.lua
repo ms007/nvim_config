@@ -58,6 +58,14 @@ return {
         },
         settings = {
           java = {
+            format = {
+              settings = {
+                profile = {
+                  tabSize = 4,
+                  indentationSize = 4,
+                },
+              },
+            },
             signatureHelp = { enabled = true },
             completion = {
               favoriteStaticMembers = {
