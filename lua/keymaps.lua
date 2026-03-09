@@ -16,8 +16,7 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
--- Diagnostic keymaps
-vim.keymap.set('n', '<leader>x', vim.diagnostic.setloclist, { desc = 'Open diagnostic Quickfi[x] list' })
+-- Diagnostic keymaps are handled by trouble.nvim (see custom/plugins/trouble.lua)
 
 -- Save file
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save current buffer' })
