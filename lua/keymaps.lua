@@ -16,6 +16,9 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
+-- Paste over selection without overwriting yank register
+vim.keymap.set('x', 'p', [["_dP]])
+
 -- Diagnostic keymaps are handled by trouble.nvim (see custom/plugins/trouble.lua)
 
 -- Save file
