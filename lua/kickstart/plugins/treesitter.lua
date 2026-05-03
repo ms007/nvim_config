@@ -1,9 +1,11 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false,
     build = ':TSUpdate',
-    opts = {
-      ensure_installed = {
+    branch = 'main',
+    config = function()
+      local parsers = {
         'bash',
         'c',
         'diff',
@@ -18,49 +20,46 @@ return {
         'javascript',
         'typescript',
         'tsx',
-      },
-      auto_install = true,
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { 'ruby' },
-      },
-      indent = { enable = true, disable = { 'ruby' } },
-      autotag = {
-        enable = true,
-      },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ['aa'] = '@parameter.outer',
-            ['ia'] = '@parameter.inner',
-            ['af'] = '@function.outer',
-            ['if'] = '@function.inner',
-            ['ac'] = '@class.outer',
-            ['ic'] = '@class.inner',
-            ['ab'] = '@block.outer',
-            ['ib'] = '@block.inner',
-            ['at'] = '@markup.outer',
-            ['it'] = '@markup.inner',
-          },
-        },
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          node_incremental = 'v',
-          node_decremental = 'V',
-        },
-      },
-    },
-    config = function(_, opts)
-      require('nvim-treesitter.configs').setup(opts)
-    end,
-  },
+      }
+      require('nvim-treesitter').install(parsers)
 
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
+      ---@param buf integer
+      ---@param language string
+      local function treesitter_try_attach(buf, language)
+        if not vim.treesitter.language.add(language) then
+          return
+        end
+        vim.treesitter.start(buf, language)
+
+        local has_indent_query = vim.treesitter.query.get(language, 'indents') ~= nil
+        if has_indent_query then
+          vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+      end
+
+      local available_parsers = require('nvim-treesitter').get_available()
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function(args)
+          local buf, filetype = args.buf, args.match
+
+          local language = vim.treesitter.language.get_lang(filetype)
+          if not language then
+            return
+          end
+
+          local installed_parsers = require('nvim-treesitter').get_installed 'parsers'
+
+          if vim.tbl_contains(installed_parsers, language) then
+            treesitter_try_attach(buf, language)
+          elseif vim.tbl_contains(available_parsers, language) then
+            require('nvim-treesitter').install(language):await(function()
+              treesitter_try_attach(buf, language)
+            end)
+          else
+            treesitter_try_attach(buf, language)
+          end
+        end,
+      })
+    end,
   },
 }
