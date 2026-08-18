@@ -12,6 +12,18 @@ return {
       ['<C-l>'] = false,
       ['<C-r>'] = 'actions.refresh',
       ['<C-v>'] = { 'actions.select', opts = { vertical = true } },
+      ['<C-t>'] = {
+        callback = function()
+          local dir = require('oil').get_current_dir()
+          if not dir then
+            return
+          end
+          -- Requires kitty remote control (allow_remote_control + listen_on in kitty.conf)
+          vim.system { 'kitten', '@', 'launch', '--type=os-window', '--cwd=' .. dir }
+        end,
+        desc = 'Open kitty OS window in directory',
+        mode = 'n',
+      },
       -- Additional actions can be found in the help file:
       -- :help oil-actions
     },

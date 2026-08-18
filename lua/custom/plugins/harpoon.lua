@@ -37,13 +37,6 @@ return {
       desc = 'Harpoon: Clear all entries',
     },
     {
-      '<leader>p',
-      function()
-        require('harpoon'):list():prev { ui_nav_wrap = true }
-      end,
-      desc = 'Harpoon: Previous file in list',
-    },
-    {
       '<leader>1',
       function()
         require('harpoon'):list():select(1)

@@ -19,6 +19,9 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 -- Paste over selection without overwriting yank register
 vim.keymap.set('x', 'p', [["_dP]])
 
+-- Paste last yank (register 0 is untouched by deletes)
+vim.keymap.set({ 'n', 'x' }, '<leader>p', '"0p', { desc = 'Paste last yank' })
+
 -- Diagnostic keymaps are handled by trouble.nvim (see custom/plugins/trouble.lua)
 
 -- Save file
